@@ -24,13 +24,39 @@ for line in content:
 reversed_sorted = OrderedDict(sorted(sort_dict.items(), reverse=True))
 keys = reversed_sorted.keys()
 key_len = len(keys)
-number_before = 12
-extract_number_element_before = key_len - number_before
+number_before = 4
+extract_number_element_before = key_len - number_before - 100
 data = open('test.csv','w')
 for i in range(0,extract_number_element_before):
     text = convert_color(reversed_sorted[keys[i]]['color'])
     for j in range(i+1,i+number_before):
         text = text + ',' + str(reversed_sorted[keys[j]]['value'])
+    count = 0
+    for k in range(2,5):
+        if reversed_sorted[keys[i+1]]['color'] != reversed_sorted[keys[i+k]]['color']:
+            count+=1
+    if count == 3:
+        text = text + ',1'
+    else:
+        text = text + ',0'
+    # count = 0
+    # for j in range(i+1,key_len):
+    #     count += 1
+    #     if reversed_sorted[keys[j]]['color'] == 'g':
+    #         break
+    # text = text + ',' + str(count)
+    # r = 0
+    # b = 0
+    # g = 0
+    # for j in range(i+1,i+101):
+    #     if reversed_sorted[keys[j]]['color'] == 'r':
+    #         r += 1
+    #     else:
+    #         if reversed_sorted[keys[j]]['color'] == 'b':
+    #             b += 1
+    #         else:
+    #             g += 1
+    # text += ','+str(r)+','+str(g)+','+str(b)
     # for j in range(i+1,i+number_before):
     #     text = text + ',' + convert_color(reversed_sorted[keys[j]]['color'])
 

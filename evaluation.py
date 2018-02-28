@@ -44,8 +44,8 @@ for i in range(0,lena):
         false_before = True
     else:
         if false_before:
-            if count_false == 10:
-                print i
+            # if count_false == 10:
+            #     print i
             if count_false in dicti:
                 dicti[count_false] += 1
             else:
@@ -57,8 +57,10 @@ f2 = open('predict_wrong_continues.txt','w')
 for key,value in dicti.items():
     f2.write(str(key)+' '+str(value)+'\n')
 f2.close()
-# from sklearn.metrics import accuracy_score
-# print accuracy_score(labelTest, y_predicted)
+from sklearn.metrics import accuracy_score
+print accuracy_score(labelTest, y_predicted)*100
+from sklearn.metrics import classification_report
+print(classification_report(labelTest, y_predicted))
 # # score = clf.score(dataTest, labelTest)
 # # print('Accuracy of sklearn: {0}%').format(score*100)
 # from sklearn.neighbors import KNeighborsClassifier
