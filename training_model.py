@@ -37,6 +37,9 @@ probably = OrderedDict()
 len_feat = len(dataTrain[0])
 count = 0
 count2 = 0
+count3 = 0
+before_lose = False
+max1 = 0
 for i in range(0, lenL):
     key = 0
     if dataTrain[i][0] > 0 and dataTrain[i][0] <= 7:
@@ -46,10 +49,18 @@ for i in range(0, lenL):
     if dataTrain[i][0] ==0:
         key = 0
     if dataTrain[i][len_feat-1] == 1 and key == labelTrain[i]:
-        count += 1
-    if dataTrain[i][len_feat-1] == 1:
+        before_lose = True
+        if before_lose:
+            count += 1
+        if count == 11:
+            count3 += 1
+        before_lose = True
+    if dataTrain[i][len_feat-1] == 1 and key != labelTrain[i]:
+        before_lose = False
+        count = 0
         count2 += 1
-print float(count)/count2
+print count3
+# print float(count)/count2
 
 #     for j in range(0, len_feat):
 #         key = ''
