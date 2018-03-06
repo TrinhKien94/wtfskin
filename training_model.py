@@ -40,6 +40,7 @@ count2 = 0
 count3 = 0
 before_lose = False
 max1 = 0
+count_total = 0
 for i in range(0, lenL):
     key = 0
     if dataTrain[i][0] > 0 and dataTrain[i][0] <= 7:
@@ -49,17 +50,22 @@ for i in range(0, lenL):
     if dataTrain[i][0] ==0:
         key = 0
     if dataTrain[i][len_feat-1] == 1 and key == labelTrain[i]:
+        count_total+=1
         before_lose = True
         if before_lose:
             count += 1
-        if count == 11:
-            count3 += 1
+        if count > max1:
+            max1 = count
+        # if count == 11:
+        #     count3 += 1
         before_lose = True
     if dataTrain[i][len_feat-1] == 1 and key != labelTrain[i]:
+        count_total+=1
         before_lose = False
         count = 0
         count2 += 1
-print count3
+print max1
+print float(count2)/count_total
 # print float(count)/count2
 
 #     for j in range(0, len_feat):

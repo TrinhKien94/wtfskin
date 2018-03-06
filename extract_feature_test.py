@@ -32,15 +32,17 @@ for i in range(0,extract_number_element_before):
     for j in range(i+1,i+number_before):
         text = text + ',' + str(reversed_sorted[keys[j]]['value'])
     count = 0
-    for k in range(2,5):
-        if reversed_sorted[keys[i+1]]['color'] != reversed_sorted[keys[i+5]]['color'] and reversed_sorted[keys[i+1]]['color'] != reversed_sorted[keys[i+6]]['color']:
-            break;
-        if reversed_sorted[keys[i+1]]['color'] == reversed_sorted[keys[i+k]]['color']:
-            count+=1
-        else:
-             break;
-    if count == 3:
+    # for k in range(2,5):
+    #     if reversed_sorted[keys[i+1]]['color'] != reversed_sorted[keys[i+5]]['color'] and reversed_sorted[keys[i+1]]['color'] != reversed_sorted[keys[i+6]]['color']:
+    #         break;
+    #     if reversed_sorted[keys[i+1]]['color'] == reversed_sorted[keys[i+k]]['color']:
+    #         count+=1
+    #     else:
+    #          break;
+    if reversed_sorted[keys[i+1]]['color'] != reversed_sorted[keys[i+2]]['color']:
         text = text + ',1'
+    # if count == 3:
+    #     text = text + ',1'
     else:
         text = text + ',0'
     # count = 0
